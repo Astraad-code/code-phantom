@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 import { blogPosts, projects, siteConfig } from "@/data/site";
+import { villes } from "@/data/villes";
+import { secteurs } from "@/data/secteurs";
+import { normes } from "@/data/normes";
+import { glossaire } from "@/data/glossaire";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -12,6 +16,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/a-propos`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/outils`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/outils/calculateur-lux`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/outils/calculateur-roi-led`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/outils/temperature-couleur`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/outils/simulateur-domotique`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/normes`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/secteurs`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/glossaire`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/guides`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   const projectPages: MetadataRoute.Sitemap = projects.map((p) => ({
@@ -28,5 +41,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...projectPages, ...blogPages];
+  const villePages: MetadataRoute.Sitemap = villes.map((v) => ({
+    url: `${base}/villes/${v.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  const secteurPages: MetadataRoute.Sitemap = secteurs.map((s) => ({
+    url: `${base}/secteurs/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const normePages: MetadataRoute.Sitemap = normes.map((n) => ({
+    url: `${base}/normes/${n.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const glossairePages: MetadataRoute.Sitemap = glossaire.map((t) => ({
+    url: `${base}/glossaire/${t.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages,
+    ...projectPages,
+    ...blogPages,
+    ...villePages,
+    ...secteurPages,
+    ...normePages,
+    ...glossairePages,
+  ];
 }
