@@ -28,6 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/outils/calcul-eclairage-bureau`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/outils/calcul-eclairage-restaurant`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${base}/outils/prix-domotique-maison`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/outils/calcul-eclairage-salon`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/outils/calcul-eclairage-cuisine`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/ressources`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     // Normes
     { url: `${base}/normes`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     // Comparatifs
